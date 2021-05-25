@@ -1,0 +1,10 @@
+<html>
+    <head>
+         <script type="text/javascript">
+            var username = {{ data.username|tojson }}
+            var site = {{ data.site|tojson }}
+            var total = {{data|tojson}}
+            console.log(total);
+        </script>
+    </head>
+</html>

@@ -1,0 +1,294 @@
+<html><html>title: AA20-336A: Advanced Persistent Threat Actors Targeting U.S. Think Tanks<br>date: 1/1/2021<br>linkhttps://us-cert.cisa.gov/ncas/alerts/aa20-336a<br>Message:Original release date: December 1, 2020<br/><h3>Summary</h3><p class=&quot;tip-intro&quot; style=&quot;font-size: 15px;&quot;><em>This Advisory uses the MITRE Adversarial Tactics, Techniques, and Common Knowledge (ATT&amp;amp;CK®) framework. See the <a href=&quot;https://attack.mitre.org/versions/v7/techniques/enterprise/&quot;>ATT&amp;amp;CK for Enterprise</a> for all referenced threat actor tactics and techniques.</em></p>
+
+<p>The Cybersecurity and Infrastructure Security Agency (CISA) and the Federal Bureau of Investigation (FBI) have observed persistent continued cyber intrusions by advanced persistent threat (APT) actors targeting U.S. think tanks. This malicious activity is often, but not exclusively, directed at individuals and organizations that focus on international affairs or national security policy.[<a href=&quot;https://www.cyberscoop.com/european-think-tanks-hack-microsoft-fancy-bear-russia/&quot;>1</a>] The following guidance may assist U.S. think tanks in developing network defense procedures to prevent or rapidly detect these attacks.</p>
+
+<p>APT actors have relied on multiple avenues for initial access. These have included low-effort capabilities such as spearphishing emails and third-party message services directed at both corporate and personal accounts, as well as exploiting vulnerable web-facing devices and remote connection capabilities. Increased telework during the COVID-19 pandemic has expanded workforce reliance on remote connectivity, affording malicious actors more opportunities to exploit those connections and to blend in with increased traffic. Attackers may leverage virtual private networks (VPNs) and other remote work tools to gain initial access or persistence on a victim’s network. When successful, these low-effort, high-reward approaches allow threat actors to steal sensitive information, acquire user credentials, and gain persistent access to victim networks.</p>
+
+<p>Given the importance that think tanks can have in shaping U.S. policy, CISA and FBI urge individuals and organizations in the international affairs and national security sectors to immediately adopt a heightened state of awareness and implement the critical steps listed in the Mitigations section of this Advisory.</p>
+
+<p><a href=&quot;https://us-cert.cisa.gov/sites/default/files/publications/AA20-336A-APT_Actors_Targeting_US_ThinkTanks.pdf&quot;>Click here</a> for a PDF version of this report.</p>
+<h3>Technical Details</h3><h4>ATT&amp;amp;CK Profile</h4>
+
+<p>CISA created the following MITRE ATT&amp;amp;CK profile to provide a non-exhaustive list of tactics, techniques, and procedures (TTPs) employed by APT actors to break through think tanks’ defenses, conduct reconnaissance in their environments, exfiltrate proprietary or confidential information, and execute effects on targets. These TTPs were included based upon closed reporting on APT actors that are known to target think tanks or based upon CISA incident response data.</p>
+
+<ul>
+	<li><em><strong>Initial Access</strong></em> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0001&quot;>TA0001</a>]
+
+	<ul>
+		<li><i>Valid Accounts </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1078/&quot;>T1078</a>]</li>
+		<li><i>Valid Accounts: Cloud Accounts </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1078/004/&quot;>T1078.004</a>]</li>
+		<li><i>External Remote Services </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1133/&quot;>T1133</a>]</li>
+		<li><i>Drive-by Compromise</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1189&quot;>T1189</a>]</li>
+		<li><i>Exploit Public-Facing Application</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1190&quot;>T1190</a>]
+		<ul>
+			<li><i>Supply Chain Compromise: Compromise Software Supply Chain</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1195/002&quot;>T1195.002</a>]</li>
+			<li><i>Trusted Relationship</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1199&quot;>T1199</a>]</li>
+			<li><i>Phishing: Spearphishing Attachment</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1566/001&quot;>T1566.001</a>]</li>
+			<li><i>Phishing: Spearphishing Link</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1566/002&quot;>T1566.002</a>]</li>
+			<li><i>Phishing: Spearphishing via Service</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1566/003&quot;>T1566.003</a>]</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Execution</strong></em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0002&quot;>TA0002</a>]
+	<ul>
+		<li><i>Windows Management Instrumentation </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1047&quot;>T1047</a>]</li>
+		<li><i>Scheduled Task/Job: Scheduled Task </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1053/005&quot;>T1053.005</a>]</li>
+		<li><i>Command and Scripting Interpreter: PowerShell </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1059/001&quot;>T1059.001</a>]</li>
+		<li><i>Command and Scripting Interpreter: Windows Command Shell</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1059/003&quot;>T1059.003</a>]</li>
+		<li><i>Command and Scripting Interpreter: Unix Shell</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1059/004&quot;>T1059.004</a>]</li>
+		<li><i>Command and Scripting Interpreter: Visual Basic </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1059/005&quot;>T1059.005</a>]</li>
+		<li><i>Command and Scripting Interpreter: Python </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1059/006&quot;>T1059.006</a>]</li>
+		<li><i>Native API </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1106&quot;>T1106</a>]</li>
+		<li><i>Exploitation for Client Execution</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1203&quot;>T1203</a>]</li>
+		<li><i>User Execution: Malicious Link </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1204/001&quot;>T1204.001</a>]</li>
+		<li><i>User Execution: Malicious File</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1204/002&quot;>T1204.002</a>]</li>
+		<li><i>Inter-Process Communication: Dynamic Data Exchange </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1559/002/&quot;>T1559.002</a>]</li>
+		<li><i>System Services: Service Execution </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1569/002&quot;>T1569.002</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Persistence</strong></em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0003&quot;>TA0003</a>]
+	<ul>
+		<li><i>Boot or Logon Initialization Scripts: Logon Script (Windows)</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1037/001&quot;>T1037.001</a>]</li>
+		<li><i>Scheduled Task/Job: Scheduled Task</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1053/005&quot;>T1053.005</a>]</li>
+		<li><i>Account Manipulation: Exchange Email Delegate Permissions </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1098/002&quot;>T1098.002</a>]</li>
+		<li><i>Create Account: Local Account</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1136/001&quot;>T1136.001</a>]</li>
+		<li><i>Office Application Startup: Office Test </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1137/002&quot;>T1137.002</a>]</li>
+		<li><i>Office Application Startup: Outlook Home Page</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1137/004&quot;>T1137.004</a>]</li>
+		<li><i>Browser Extensions</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1176&quot;>T1176</a>]</li>
+		<li><i>BITS Jobs</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1197/&quot;>T1197</a>]</li>
+		<li><i>Server Software Component: Web Shell</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1505/003&quot;>T1505.003</a>]</li>
+		<li><i>Pre-OS Boot: Bootkit</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1542/003/&quot;>T1542.003</a>]</li>
+		<li><i>Create or Modify System Process: Windows Service</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1543/003&quot;>T1543.003</a>]</li>
+		<li><i>Event Triggered Execution: Change Default File Association</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1546/001&quot;>T1546.001</a>]</li>
+		<li><i>Event Triggered Execution: Windows Management Instrumentation Event Subscription </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1546/003&quot;>T1546.003</a>]</li>
+		<li><i>Event Triggered Execution: Accessibility Features</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1546/008&quot;>T1546.008</a>]</li>
+		<li><i>Event Triggered Execution: Component Object Model Hijacking</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1546/015&quot;>T1546.015</a>]</li>
+		<li><i>Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1547/001&quot;>T1547.001</a>]</li>
+		<li><i>Boot or Logon Autostart Execution: Shortcut Modification</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1547/009&quot;>T1547.009</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Privilege Escalation</strong></em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0004&quot;>TA0004</a>]
+	<ul>
+		<li><i>Process Injection</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1055&quot;>T1055</a>]</li>
+		<li><i>Process Injection: Process Hollowing</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1055/012&quot;>T1055.012</a>]</li>
+		<li><i>Exploitation for Privilege Escalation</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1068&quot;>T1068</a>]</li>
+		<li><i>Access Token Manipulation: Token Impersonation/Theft</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1134/001&quot;>T1134.001</a>]</li>
+		<li><i>Event Triggered Execution: Accessibility Features </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1546/008&quot;>T1546.008</a>]</li>
+		<li><i>Boot or Logon Autostart Execution: Shortcut Modification</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1547/009&quot;>T1547.009</a>]</li>
+		<li><i>Abuse Elevation Control Mechanism: Bypass User Access Control</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1548/002&quot;>T1548.002</a>]</li>
+		<li><i>Hijack Execution Flow: DLL Side-Loading</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1574/002&quot;>T1574.002</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Defense Evasion</strong></em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0005&quot;>TA0005</a>]
+	<ul>
+		<li><i>Rootkit</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1014&quot;>T1014</a>]</li>
+		<li><i>Obfuscated Files or Information: Binary Padding </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1027/001&quot;>T1027.001</a>]</li>
+		<li><i>Obfuscated Files or Information: Software Packing </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1027/002&quot;>T1027.002</a>]</li>
+		<li><i>Obfuscated Files or Information: Steganography</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1027/003&quot;>T1027.003</a>]</li>
+		<li><i>Obfuscated Files or Information: Indicator Removal from Tools</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1027/005&quot;>T1027.005</a>]</li>
+		<li><i>Masquerading: Match Legitimate Name or Location</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1036/005&quot;>T1036.005</a>]</li>
+		<li><i>Indicator Removal on Host: Clear Windows Event Logs</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1070/001&quot;>T1070.001</a>]</li>
+		<li><i>Indicator Removal on Host: Clear Command History</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1070/003&quot;>1070.003</a>]</li>
+		<li><i>Indicator Removal on Host: File Deletion</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1070/004&quot;>T1070.004</a>]</li>
+		<li><i>Indicator Removal on Host: Timestomp</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1070/006&quot;>T1070.006</a>]</li>
+		<li><i>Modify Registry</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1112&quot;>T1112</a>]</li>
+		<li><i>Deobfuscate/Decode Files or Information </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1140&quot;>T1140</a>]</li>
+		<li><i>Exploitation for Defense Evasion</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1211&quot;>T1211</a>]</li>
+		<li><i>Signed Binary Proxy Execution: Compiled HTML File</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1218/001&quot;>T1218.001</a>]</li>
+		<li><i><em>Signed Binary Proxy Execution: Mshta</em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1218/005&quot;>T1218.005</a>]</li>
+		<li><i>Signed Binary Proxy Execution:<em> Rundll32 </em></i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1218/011&quot;>T1218.011</a>]</li>
+		<li><i>Template Injection</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1221&quot;>T1221</a>]</li>
+		<li><i>Execution Guardrails: Environmental Keying</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1480/001&quot;>T1480.001</a>]</li>
+		<li><i>Abuse Elevation Control Mechanism: Bypass User Access Control</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1548/002&quot;>T1548.002</a>]</li>
+		<li><i>Use Alternate Authentication Material: Application Access Token</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1550/001&quot;>T1550.001</a>]</li>
+		<li><i>Subvert Trust Controls: Code Signing</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1553/002&quot;>T1553.002</a>]</li>
+		<li><i>Impair Defenses: Disable or Modify Tools</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1562/001&quot;>T1562.001</a>]</li>
+		<li><i>Impair Defenses: Disable or Modify System Firewall</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1562/004&quot;>T1562.004</a>]</li>
+		<li><i>Hide Artifacts: Hidden Files and Directories </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1564/001&quot;>T1564.001</a>]</li>
+		<li><i>Hide Artifacts: Hidden Window</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1564/003&quot;>T1564.003</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Credential Access</strong></em> </i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0006&quot;>TA0006</a>]
+	<ul>
+		<li><i>OS Credential Dumping: LSASS Memory</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1003/001&quot;>T1003.001</a>]</li>
+		<li><i>OS Credential Dumping: Security Account Manager </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1003/002&quot;>T1003.002</a>]</li>
+		<li><i>OS Credential Dumping: NTDS</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1003/003&quot;>T1003.003</a>]</li>
+		<li><i>OS Credential Dumping: LSA Secrets</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1003/004&quot;>T1003.004</a>]</li>
+		<li><i>OS Credential Dumping: Cached Domain Credentials</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1003/005&quot;>T1003.005</a>]</li>
+		<li><i>Network Sniffing</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1040&quot;>T1040</a>]</li>
+		<li><i>Input Capture: Keylogging</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1056/001&quot;>T1056.001</a>]</li>
+		<li><i>Brute Force: Password Cracking</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1110/002&quot;>T1110.002</a>]<i>Brute Force: Password Spraying</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1110/003&quot;>T1110.003</a>]</li>
+		<li><i>Forced Authentication</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1187&quot;>T1187</a>]</li>
+		<li><i>Steal Application Access Token</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1528&quot;>T1528</a>]</li>
+		<li><i>Unsecured Credentials: Credentials in Files</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1552/001&quot;>T1552.001</a>]</li>
+		<li><i>Unsecured Credentials: Group Policy Preferences</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1552/006&quot;>T1552.006</a>]</li>
+		<li><i>Credentials from Password Stores: Credentials from Web Browsers</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1555/003&quot;>T1555.003</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Discovery</strong></em> </i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0007&quot;>TA0007</a>]
+	<ul>
+		<li><i>System Service Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1007&quot;>T1007</a>]</li>
+		<li><i>Query Registry</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1012&quot;>T1012</a>]</li>
+		<li><i>System Network Configuration Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1016&quot;>T1016</a>]</li>
+		<li><i>Remote System Discovery </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1018&quot;>T1018</a>]</li>
+		<li><i>System Owner/User Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1033&quot;>T1033</a>]</li>
+		<li><i>Network Sniffing</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1040&quot;>T1040</a>]</li>
+		<li><i>Network Service Scanning</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1046&quot;>T1046</a>]</li>
+		<li><i>System Network Connections Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1049&quot;>T1049</a>]</li>
+		<li><i>Process Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1057&quot;>T1057</a>]</li>
+		<li><i>Permission Groups Discovery: Local Groups</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1069/001&quot;>T1069.001</a>]</li>
+		<li><i>Permission Groups Discovery: Domain Groups</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1069/002&quot;>T1069.002</a>]</li>
+		<li><i>System Information Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1082&quot;>T1082</a>]</li>
+		<li><i>File and Directory Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1083&quot;>T1083</a>]</li>
+		<li><i>Account Discovery: Local Account</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1087/001&quot;>T1087.001</a>]</li>
+		<li><i>Account Discovery: Domain Account</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1087/002&quot;>T1087.002</a>]</li>
+		<li><i>Peripheral Device Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1120&quot;>T1120</a>]</li>
+		<li><i>Network Share Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1135&quot;>T1135</a>]</li>
+		<li><i>Password Policy Discovery </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1201/&quot;>T1201</a>]</li>
+		<li><i>Software Discovery: Security Software Discovery</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1518/001&quot;>T1518.001</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Lateral Movement </strong></em></i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0008&quot;>TA0008</a>]
+	<ul>
+		<li><i>Remote Services: Remote Desktop Protocol</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1021/001&quot;>T1021.001</a>]</li>
+		<li><i>Remote Services: SSH </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1021/004&quot;>T1021.004</a>]</li>
+		<li><i>Taint Shared Content </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1080/&quot;>T1080</a>]</li>
+		<li><i>Replication Through Removable Media </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1091&quot;>T1091</a>]</li>
+		<li><i>Exploitation of Remote Services</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1210&quot;>T1210</a>]</li>
+		<li><i>Use Alternate Authentication Material: Pass the Hash </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1550/002&quot;>T1550.002</a>]</li>
+		<li><i>Use Alternate Authentication Material: Pass the Ticket</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1550/003&quot;>T1550.003</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Collection</strong></em></i> [<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0009&quot;>TA0009</a>]
+	<ul>
+		<li><i>Data from Local System</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1005&quot;>T1005</a>]</li>
+		<li><i>Data from Removable Media</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1025&quot;>T1025</a>]</li>
+		<li><i>Data Staged: Local Data Staging</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1074/001&quot;>T1074.001</a>]</li>
+		<li><i>Screen Capture</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1113&quot;>T1113</a>]</li>
+		<li><i>Email Collection: Local Email Collection</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1114/001&quot;>T1114.001</a>]</li>
+		<li><i>Email Collection: Remote Email Collection</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1114/002&quot;>T1114.002</a>]</li>
+		<li><i>Automated Collection</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1119&quot;>T1119</a>]</li>
+		<li><i>Audio Capture</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1123&quot;>T1123</a>]</li>
+		<li><i>Data from Information Repositories: SharePoint </i>[<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1213/002&quot;>T1213.002</a>]</li>
+		<li><i>Archive Collected Data: Archive via Utility</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1560/001&quot;>T1560.001</a>]</li>
+		<li><i>Archive Collected Data: Archive via Custom Method</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1560/003&quot;>T1560.003</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Command and Control</strong></em> </i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0011&quot;>TA0011</a>]
+	<ul>
+		<li><i>Data Obfuscation: Junk Data</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1001/001/&quot;>T1001.001</a>]</li>
+		<li><i>Fallback Channels</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1008&quot;>T1008</a>]</li>
+		<li><i>Application Layer Protocol: Web Protocols</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1071/001&quot;>T1071.001</a>]</li>
+		<li><i>Application Layer Protocol: File Transfer Protocols</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1071/002&quot;>T1071.002</a>]</li>
+		<li><i>Application Layer Protocol: Mail Protocols</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1071/003&quot;>T1071.003</a>]</li>
+		<li><i>Application Layer Protocol: DNS</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1071/004&quot;>T1071.004</a>]</li>
+		<li><i>Proxy: External Proxy</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1090/002&quot;>T1090.002</a>]</li>
+		<li><i>Proxy: Multi-hop Proxy</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1090/003&quot;>T1090.003</a>]</li>
+		<li><i>Proxy: Domain Fronting</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1090/004&quot;>T1090.004</a>]</li>
+		<li><i>Communication Through Removable Media</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1092&quot;>T1092</a>]</li>
+		<li><i>Non-Application Layer Protocol</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1095&quot;>T1095</a>]</li>
+		<li><i>Web Service: Dead Drop Resolver</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1102/001&quot;>T1102.001</a>]</li>
+		<li><i>Web Service: Bidirectional Communication</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1102/002&quot;>T1102.002</a>]</li>
+		<li><i>Multi-Stage Channels</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1104&quot;>T1104</a>]</li>
+		<li><i>Ingress Tool Transfer</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1105&quot;>T1105</a>]</li>
+		<li><i>Data Encoding: Standard Encoding</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1132/001&quot;>T1132.001</a>]</li>
+		<li><i>Remote Access Software</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1219&quot;>T1219</a>]</li>
+		<li><i>Dynamic Resolution: Domain Generation Algorithms</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1568/002&quot;>T1568.002</a>]</li>
+		<li><i>Non-Standard Port</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1571&quot;>T1571</a>]</li>
+		<li><i>Protocol Tunneling</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1572&quot;>T1572</a>]</li>
+		<li><i>Encrypted Channel: Symmetric Cryptography</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1573/001&quot;>T1573.001</a>]</li>
+		<li><i>Encrypted Channel: Asymmetric Cryptography</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1573/002&quot;>T1573.002</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong><span style=&quot;display: none;&quot;>&amp;nbsp;</span>Exfiltration</strong> </em></i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0010&quot;>TA0010</a>]
+	<ul>
+		<li><i>Exfiltration Over C2 Channel</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1041&quot;>T1041</a>]</li>
+		<li><i>Exfiltration Over Alternative Protocol: Exfiltration Over Unencrypted/Obfuscated Non-C2 Protocol</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1048/003&quot;>T1048.003</a>]</li>
+	</ul>
+	</li>
+	<li><i><em><strong>Impact </strong></em></i>[<a href=&quot;https://attack.mitre.org/versions/v7/tactics/TA0040&quot;>TA0040</a>]
+	<ul>
+		<li><i>Data Encrypted for Impact</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1486&quot;>T1486</a>]</li>
+		<li><i>Resource Hijacking</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1496&quot;>T1496</a>]</li>
+		<li><i>System Shutdown/Reboot</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1529&quot;>T1529</a>]</li>
+		<li><i>Disk Wipe: Disk Structure Wipe</i> [<a href=&quot;https://attack.mitre.org/versions/v7/techniques/T1561/002&quot;>T1561.002</a>]</li>
+	</ul>
+	</li>
+</ul>
+<h3>Mitigations</h3><p>CISA and FBI recommend think tank organizations apply the following critical practices to strengthen their security posture.</p>
+
+<h4>Leaders</h4>
+
+<ul>
+	<li>Implement a training program to familiarize users with identifying social engineering techniques and phishing emails.</li>
+</ul>
+
+<h4>Users/Staff</h4>
+
+<ul>
+	<li>Log off remote connections when not in use.</li>
+	<li>Be vigilant against tailored spearphishing attacks targeting corporate and personal accounts (including both email and social media accounts).</li>
+	<li>Use different passwords for corporate and personal accounts.</li>
+	<li>Install antivirus software on personal devices to automatically scan and quarantine suspicious files.</li>
+	<li>Employ strong multi-factor authentication for personal accounts, if available.</li>
+	<li>Exercise caution when:
+	<ul>
+		<li>Opening email attachments, even if the attachment is expected and the sender appears to be known. See <a href=&quot;https://www.us-cert.gov/ncas/tips/ST04-010&quot;>Using Caution with Email Attachments</a>.</li>
+		<li>Using removable media (e.g., USB thumb drives, external drives, CDs).</li>
+	</ul>
+	</li>
+</ul>
+
+<h4>IT Staff/Cybersecurity Personnel</h4>
+
+<ul>
+	<li>Segment and segregate networks and functions.</li>
+	<li>Change the default username and password of applications and appliances.</li>
+	<li>Employ strong multi-factor authentication for corporate accounts.</li>
+	<li>Deploy antivirus software on organizational devices to automatically scan and quarantine suspicious files.</li>
+	<li>Apply encryption to data at rest and data in transit.</li>
+	<li>Use email security appliances to scan and remove malicious email attachments or links.</li>
+	<li>Monitor key internal security tools and identify anomalous behavior. Flag any known indicators of compromise or threat actor behaviors for immediate response.</li>
+	<li>Organizations can implement mitigations of varying complexity and restrictiveness to reduce the risk posed by threat actors who use Tor (The Onion Router) to carry out malicious activities. See the CISA-FBI Joint Cybersecurity Advisory on <a href=&quot;https://us-cert.cisa.gov/ncas/alerts/aa20-183a&quot;>Defending Against Malicious Cyber Activity Originating from Tor</a> for mitigation options and additional information.</li>
+	<li>Prevent exploitation of known software vulnerabilities by routinely applying software patches and upgrades. Foreign cyber threat actors continue to exploit publicly known—and often dated—software vulnerabilities against broad target sets, including public and private sector organizations. If these vulnerabilities are left unpatched, exploitation often requires few resources and provides threat actors with easy access to victim networks. Review CISA and FBI’s <a href=&quot;https://us-cert.cisa.gov/ncas/alerts/aa20-133a&quot;>Top 10 Routinely Exploited Vulnerabilities</a> and other CISA alerts that identify vulnerabilities exploited by foreign attackers.</li>
+	<li>Implement an antivirus program and a formalized patch management process.</li>
+	<li>Block certain websites and email attachments commonly associated with malware (e.g., .scr, .pif, .cpl, .dll, .exe).</li>
+	<li>Block email attachments that cannot be scanned by antivirus software (e.g., .zip files).</li>
+	<li>Implement Group Policy Object and firewall rules.</li>
+	<li>Implement filters at the email gateway and block suspicious IP addresses at the firewall.</li>
+	<li>Routinely audit domain and local accounts as well as their permission levels to look for situations that could allow an adversary to gain wide access by obtaining credentials of a privileged account.</li>
+	<li>Follow best practices for design and administration of the network to limit privileged account use across administrative tiers.</li>
+	<li>Implement a Domain-Based Message Authentication, Reporting &amp;amp; Conformance (DMARC) validation system.</li>
+	<li>Disable or block unnecessary remote services.</li>
+	<li>Limit access to remote services through centrally managed concentrators.</li>
+	<li>Deny direct remote access to internal systems or resources by using network proxies, gateways, and firewalls.</li>
+	<li>Limit unnecessary lateral communications.</li>
+	<li>Disable file and printer sharing services. If these services are required, use strong passwords or Active Directory authentication.</li>
+	<li>Ensure applications do not store sensitive data or credentials insecurely.</li>
+	<li>Enable a firewall on agency workstations, configured to deny unsolicited connection requests.</li>
+	<li>Disable unnecessary services on agency workstations and servers.</li>
+	<li>Scan for and remove suspicious email attachments; ensure any scanned attachment is its &quot;true file type&quot; (i.e., the extension matches the file header).</li>
+	<li>Monitor users&#039; web browsing habits; restrict access to suspicious or risky sites. Contact law enforcement or CISA immediately regarding any unauthorized network access identified.</li>
+	<li>Visit the MITRE ATT&amp;amp;CK techniques and tactics pages linked in the ATT&amp;amp;CK Profile section above for additional mitigation and detection strategies for this malicious activity targeting think tanks.</li>
+</ul>
+<h3>Contact Information</h3><p>Recipients of this report are encouraged to contribute any additional information that they may have related to this threat. To report suspicious or criminal activity related to information found in this Joint Cybersecurity Advisory, contact your local FBI field office at <a href=&quot;http://www.fbi.gov/contact-us/field&quot;>www.fbi.gov/contact-us/field</a>, or the FBI’s 24/7 Cyber Watch (CyWatch) at (855) 292-3937 or by email at <a href=&quot;https://us-cert.cisa.govmailto:CyWatch@fbi.gov&quot;>CyWatch@fbi.gov</a>. When available, please include the following information regarding the incident: date, time, and location of the incident; type of activity; number of people affected; type of equipment used for the activity; the name of the submitting company or organization; and a designated point of contact. To request incident response resources or technical assistance related to these threats, contact CISA at <a href=&quot;https://us-cert.cisa.govmailto:Central@cisa.gov&quot;>Central@cisa.gov</a>.</p>
+
+<h3>References</h3>
+
+<ul>
+	<li><a href=&quot;https://us-cert.cisa.gov/ncas/alerts/aa20-120a&quot;>CISA Alert: Microsoft Office 365 Security Recommendations</a></li>
+	<li><a href=&quot;https://us-cert.cisa.gov/ncas/alerts/aa20-245a&quot;>CISA Alert: Technical Approaches to Uncovering and Remediating Malicious Activity</a></li>
+	<li><a href=&quot;https://www.cisa.gov/telework&quot;>CISA Webpage: Telework Guidance</a></li>
+	<li><a href=&quot;https://www.cisa.gov/vpn-related-guidance&quot;>CISA Webpage: VPN-Related Guidance</a></li>
+	<li><a href=&quot;http://image.communications.cyber.nj.gov/lib/fe3e15707564047c7c1270/m/2/PIN+-+4.9.2020.pdf&quot;>FBI Private Industry Notification: PIN 20200409-001</a></li>
+</ul>
+                    <h3>References</h3>
+		        <ul>		            	<li><a href=&quot;https://www.cyberscoop.com/european-think-tanks-hack-microsoft-fancy-bear-russia/&quot;>[1] CyberScoop: As Europe prepares to vote, Microsoft warns of Fancy Bear attacks on democratic think tanks</a></li>		        </ul>            <h3>Revisions</h3>
+		<ul>			            <li>Initial Version: December 1, 2020</li>		</ul>
+		<hr />
+            <div class=&quot;field field--name-body field--type-text-with-summary field--label-hidden field--item&quot;><p class=&quot;privacy-and-terms&quot;>This product is provided subject to this <a href=&quot;https://us-cert.cisa.gov/privacy/notification&quot;>Notification</a> and this <a href=&quot;https://www.dhs.gov/privacy-policy&quot;>Privacy &amp;amp; Use</a> policy.</p>
+
+
+</div>
+      <br></html>

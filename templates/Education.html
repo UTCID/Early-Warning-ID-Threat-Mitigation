@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  body {
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .navbar {
+  overflow: hidden;
+  background-color: #bf5700;
+  }
+
+  .navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  }
+
+  .dropdown {
+  float: left;
+  overflow: hidden;
+  }
+
+  .dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  }
+
+  .navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+  }
+
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  }
+
+  .dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  }
+
+  .dropdown-content a:hover {
+  background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  </style>
+
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet"  type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script type="text/javascript">
+        function showHideRow(row) {
+            $("#" + row).toggle();
+        }
+    </script>
+    <script type="text/javascript">
+      console.log("CreateTable Function Invoked");
+      var test = {{data|tojson}}
+      console.log(test);
+      var information = {{info|tojson}}
+      console.log(information)
+      var mitigation_var = {{mitigation|tojson}}
+      function createTable(){
+        var answer = "";
+        var index = 1;
+        for (var k in test){
+          var func_click = "hidden_row"+index;
+          var temporary_row ="<tr onclick=\"showHideRow('"+func_click+"');\">"
+            temporary_row+= "<td>"+index+"</td>";
+            index++;
+            temporary_row+= "<td>"+k+"</td>";
+            temporary_row+= "<td>" +test[k][0]+"</td>";
+            temporary_row+="</tr>"
+
+            temporary_row +="<tr id=\""+func_click+"\" class=\"hidden_row\">"
+            temporary_row +="<td colspan=5>"
+            console.log(test[k][0][0])
+            for (var pop in test[k][1]){
+              //console.log(pop)
+              temporary_row += "<b><h3>"+pop +"</h3></b>"
+              temporary_row += test[k][1][pop][0]
+              //console.log(test[k][1][pop][0])
+              temporary_row += "<br><br>"
+            }
+            var g =test[k][0][0];
+            temporary_row+="<br><b><h3>Mitigations for the Top Tactic "+g+"</h3></b>"
+            //temporary_row+=test[k][1][g][1];
+            //console.log(test[k][1][g][1]);
+            for (var mit in test[k][1][g][1]){
+              //console.log(test[k][1][g][1][mit]);
+                var id, desc;
+                for (var temp in information){
+                  if(test[k][1][g][1][mit]==temp){
+                    id = information[temp][0]
+                    desc = information[temp][1]
+                  }
+                }
+
+                var link = "https://attack.mitre.org/mitigations/"+id;
+                console.log(link)
+                //temporary_row+="<a href=\""+link"\">" +test[k][1][g][1][mit];+"</a>";
+                temporary_row+="<a href = "+ link+">"+test[k][1][g][1][mit]+"</a><br>";
+            }
+            temporary_row+="<br><b><h3>Prioritized Mitigation: "+mitigation_var[k]+"</h3></b>"
+            temporary_row+="</td></tr>";
+            answer += temporary_row;
+        }
+        document.write(answer);
+      }
+    </script>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0px;
+            text-align: center;
+            width: 100%;
+            font-family: "Myriad Pro",
+                "Helvetica Neue", Helvetica,
+                Arial, Sans-Serif;
+        }
+
+        #wrapper {
+            margin: 0 auto;
+            padding: 0px;
+            text-align: center;
+            width: 995px;
+        }
+
+        #wrapper h1 {
+            margin-top: 50px;
+            font-size: 45px;
+            color: #585858;
+        }
+
+        #wrapper h1 p {
+            font-size: 20px;
+        }
+
+        #table_detail {
+            width: 500px;
+            text-align: left;
+            border-collapse: collapse;
+            color: #2E2E2E;
+            border: #A4A4A4;
+        }
+
+        #table_detail tr:hover {
+            background-color: #F2F2F2;
+        }
+
+        #table_detail .hidden_row {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="navbar">
+  <a class= "active" href="EDUCATION" style ="font-size:75%"> EDUCATION</a>
+  <a class= "active" href="FINANCE" style ="font-size:75%">FINANCE</a>
+    <a class= "active" href="MISCELLANOUS" style ="font-size:75%">MISCELLANOUS</a>
+    <a class= "active" href="GOVERNMENT" style ="font-size:75%">GOVERNMENT</a>
+    <a class= "active" href="HEALTHCARE" style ="font-size:75%">HEALTHCARE</a>
+    <a class= "active" href="RETAIL" style ="font-size:75%">RETAIL SHOPPING</a>
+    <a class= "active" href="HOTEL" style ="font-size:75%">HOTELS</a>
+    <a class= "active" href="HOME IMPROVEMENT" style ="font-size:75%">HOME IMPROVEMENT</a>
+    <a class= "active" href="RELIGION" style ="font-size:75%">RELIGIOUS ORGANIZATION</a>
+    <a class= "active" href="TRAVEL" style ="font-size:75%">TRAVEL</a>
+    <a class= "active" href="ENTERTAINMENT" style ="font-size:75%">ENTERTAINMENT</a>
+    <a class= "active" href="TECHNOLOGY" style ="font-size:75%">TECHNOLOGY</a>
+    <a class= "active" href="CISA" style ="font-size:75%">CISA ALERTS</a>
+</div>
+    <div id="wrapper" style = "padding-top: 2%">
+
+        <table border=2 id="table_detail"
+            align=center cellpadding=20 style = "width:100%">
+            <tr style = "background-color:#6A6C6E" style="color:#6A6C6E">
+                <th style = "text-align:center; color:#F5F5F5">Index</th>
+                <th style = "text-align:center; color:#F5F5F5">Story_Number</th>
+                <th style = "text-align:center; color:#F5F5F5">Top Tactics Used</th>
+            </tr>
+            <script>createTable();</script>
+            </style>
+        </table>
+    </div>
+</body>
+
+</html
